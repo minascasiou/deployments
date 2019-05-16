@@ -1,0 +1,102 @@
+{
+  "id": "/subscriptions/34cc8b9f-3f60-4793-8892-eaa67f8b361e/resourceGroups/SantaRecycling-RG/providers/Microsoft.Resources/deployments/WebApp-32816df0-9f18",
+  "name": "WebApp-32816df0-9f18",
+  "properties": {
+    "templateHash": "2818757741771677715",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
+        "value": "34cc8b9f-3f60-4793-8892-eaa67f8b361e"
+      },
+      "name": {
+        "type": "String",
+        "value": "SantaRecyclingWebApp"
+      },
+      "location": {
+        "type": "String",
+        "value": "Australia East"
+      },
+      "hostingEnvironment": {
+        "type": "String",
+        "value": ""
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "SantaRecyclingAppServicePlan"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "SantaRecycling-RG"
+      },
+      "alwaysOn": {
+        "type": "Bool",
+        "value": false
+      },
+      "sku": {
+        "type": "String",
+        "value": "Free"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "F1"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "0"
+      },
+      "workerSizeId": {
+        "type": "String",
+        "value": "0"
+      },
+      "numberOfWorkers": {
+        "type": "String",
+        "value": "1"
+      },
+      "linuxFxVersion": {
+        "type": "String",
+        "value": "NODE|10.14"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "RequestContent, ResponseContent"
+    },
+    "provisioningState": "Running",
+    "timestamp": "2019-05-16T10:17:02.7219538Z",
+    "duration": "PT0.4737537S",
+    "correlationId": "c1cca908-c1f6-420f-ba10-1d5a121f30ca",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "australiaeast"
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "australiaeast"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/34cc8b9f-3f60-4793-8892-eaa67f8b361e/resourceGroups/SantaRecycling-RG/providers/Microsoft.Web/serverfarms/SantaRecyclingAppServicePlan",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "SantaRecyclingAppServicePlan"
+          }
+        ],
+        "id": "/subscriptions/34cc8b9f-3f60-4793-8892-eaa67f8b361e/resourceGroups/SantaRecycling-RG/providers/Microsoft.Web/sites/SantaRecyclingWebApp",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "SantaRecyclingWebApp"
+      }
+    ]
+  }
+}
