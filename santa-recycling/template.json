@@ -3,55 +3,55 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptionId": {
-            "type": "String"
+            "type": "string"
         },
         "name": {
-            "type": "String"
+            "type": "string"
         },
         "location": {
-            "type": "String"
+            "type": "string"
         },
         "hostingEnvironment": {
-            "type": "String"
+            "type": "string"
         },
         "hostingPlanName": {
-            "type": "String"
+            "type": "string"
         },
         "serverFarmResourceGroup": {
-            "type": "String"
+            "type": "string"
         },
         "alwaysOn": {
-            "type": "Bool"
+            "type": "bool"
         },
         "sku": {
-            "type": "String"
+            "type": "string"
         },
         "skuCode": {
-            "type": "String"
+            "type": "string"
         },
         "workerSize": {
-            "type": "String"
+            "type": "string"
         },
         "workerSizeId": {
-            "type": "String"
+            "type": "string"
         },
         "numberOfWorkers": {
-            "type": "String"
+            "type": "string"
         },
         "linuxFxVersion": {
-            "type": "String"
+            "type": "string"
         }
     },
     "resources": [
         {
-            "type": "Microsoft.Web/sites",
             "apiVersion": "2018-02-01",
             "name": "[parameters('name')]",
+            "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
+            "tags": {},
             "dependsOn": [
                 "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
             ],
-            "tags": {},
             "properties": {
                 "name": "[parameters('name')]",
                 "siteConfig": {
@@ -65,16 +65,12 @@
             }
         },
         {
-            "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
             "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('location')]",
-            "tags": {},
-            "sku": {
-                "Tier": "[parameters('sku')]",
-                "Name": "[parameters('skuCode')]"
-            },
             "kind": "linux",
+            "tags": {},
             "properties": {
                 "name": "[parameters('hostingPlanName')]",
                 "workerSize": "[parameters('workerSize')]",
@@ -82,6 +78,10 @@
                 "numberOfWorkers": "[parameters('numberOfWorkers')]",
                 "reserved": true,
                 "hostingEnvironment": "[parameters('hostingEnvironment')]"
+            },
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
             }
         }
     ]
