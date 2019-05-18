@@ -6,42 +6,18 @@
             "defaultValue": "SantaRecyclingWebApp",
             "type": "String"
         },
-        "serverfarms_ASP_santarecyclingRG_8205_name": {
-            "defaultValue": "ASP-santarecyclingRG-8205",
+        "serverfarms_ASP_santarecyclingRG_8c64_externalid": {
+            "defaultValue": "/subscriptions/b734024e-e032-4030-9ca2-1344258df1c3/resourceGroups/santa-recycling-RG/providers/Microsoft.Web/serverfarms/ASP-santarecyclingRG-8c64",
             "type": "String"
         }
     },
     "variables": {},
     "resources": [
         {
-            "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2016-09-01",
-            "name": "[parameters('serverfarms_ASP_santarecyclingRG_8205_name')]",
-            "location": "Australia East",
-            "sku": {
-                "name": "F1",
-                "tier": "Free",
-                "size": "F1",
-                "family": "F",
-                "capacity": 1
-            },
-            "kind": "linux",
-            "properties": {
-                "name": "[parameters('serverfarms_ASP_santarecyclingRG_8205_name')]",
-                "perSiteScaling": false,
-                "reserved": true,
-                "targetWorkerCount": 0,
-                "targetWorkerSizeId": 0
-            }
-        },
-        {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2016-08-01",
             "name": "[parameters('sites_SantaRecyclingWebApp_name')]",
             "location": "Australia East",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_santarecyclingRG_8205_name'))]"
-            ],
             "kind": "app,linux",
             "properties": {
                 "enabled": true,
@@ -57,7 +33,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_santarecyclingRG_8205_name'))]",
+                "serverFarmId": "[parameters('serverfarms_ASP_santarecyclingRG_8c64_externalid')]",
                 "reserved": true,
                 "scmSiteAlsoStopped": false,
                 "clientAffinityEnabled": false,
@@ -96,11 +72,12 @@
                 "linuxFxVersion": "NODE|10.14",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
-                "httpLoggingEnabled": false,
+                "remoteDebuggingVersion": "VS2017",
+                "httpLoggingEnabled": true,
                 "logsDirectorySizeLimit": 35,
                 "detailedErrorLoggingEnabled": false,
                 "publishingUsername": "$SantaRecyclingWebApp",
-                "scmType": "None",
+                "scmType": "VSTSRM",
                 "use32BitWorkerProcess": true,
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
@@ -156,6 +133,26 @@
                 "minTlsVersion": "1.2",
                 "ftpsState": "AllAllowed",
                 "reservedInstanceCount": 0
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2016-08-01",
+            "name": "[concat(parameters('sites_SantaRecyclingWebApp_name'), '/217acbd217db4ccabbeb24dc50aab6bf')]",
+            "location": "Australia East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_SantaRecyclingWebApp_name'))]"
+            ],
+            "properties": {
+                "id": "217acbd217db4ccabbeb24dc50aab6bf",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"deployment\",\"commitId\":\"be5b9e8fe6f515d90f6256ea0a85146957a8046b\",\"buildId\":\"14\",\"releaseId\":\"36\",\"buildNumber\":\"20190516.4\",\"releaseName\":\"Release-24\",\"repoProvider\":\"GitHub\",\"repoName\":\"minascasiou/santa-recycling\",\"collectionUrl\":\"https://minascasiou.visualstudio.com/\",\"teamProject\":\"b256b640-48f9-4475-9ba8-87129dd34162\",\"slotName\":\"production\"}",
+                "start_time": "2019-05-16T12:44:39.8234995Z",
+                "end_time": "2019-05-16T12:44:40.3527922Z",
+                "active": true
             }
         },
         {
