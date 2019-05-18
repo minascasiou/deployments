@@ -2,44 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptionId": {
-            "value": "b734024e-e032-4030-9ca2-1344258df1c3"
+        "sites_SantaRecyclingWebApp_name": {
+            "value": null
         },
-        "name": {
-            "value": "SantaRecyclingWebApp"
-        },
-        "location": {
-            "value": "Australia East"
-        },
-        "hostingEnvironment": {
-            "value": ""
-        },
-        "hostingPlanName": {
-            "value": "ASP-santarecyclingRG-8c64"
-        },
-        "serverFarmResourceGroup": {
-            "value": "santa-recycling-RG"
-        },
-        "alwaysOn": {
-            "value": false
-        },
-        "sku": {
-            "value": "Free"
-        },
-        "skuCode": {
-            "value": "F1"
-        },
-        "workerSize": {
-            "value": "0"
-        },
-        "workerSizeId": {
-            "value": "0"
-        },
-        "numberOfWorkers": {
-            "value": "1"
-        },
-        "linuxFxVersion": {
-            "value": "NODE|10.14"
+        "serverfarms_ASP_santarecyclingRG_8205_name": {
+            "value": null
         }
     }
 }
